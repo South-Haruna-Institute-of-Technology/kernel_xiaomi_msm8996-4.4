@@ -1424,6 +1424,7 @@ static struct dma_buf_ops dma_buf_ops = {
 	.kmap_atomic = ion_dma_buf_kmap,
 	.kunmap_atomic = ion_dma_buf_kunmap,
 	.kmap = ion_dma_buf_kmap,
+	.get_flags = ion_dma_buf_get_flags,
 	.kunmap = ion_dma_buf_kunmap,
 	.get_flags = ion_dma_buf_get_flags
 };
