@@ -1517,8 +1517,11 @@ static ssize_t disksize_store(struct device *dev,
 		goto out_unlock;
 	}
 
-	if (disksize != 2361393152) /* Miui Sets 2361393152 = 2252MB */
-		disksize = 2361393152;
+	device_totalram();
+	if (ramgb >= 4)
+		disksize = 2361393152; /* AGNi Memory management: >= 4gb ram devices */
+	else
+		disksize = 1665393152; /* AGNi Memory management: 3gb ram devices */
 	zramzero = false;
 	dyn_fsync_active = true;
 
