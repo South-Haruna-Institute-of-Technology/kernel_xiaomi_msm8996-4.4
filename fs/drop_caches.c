@@ -56,6 +56,7 @@ void mm_drop_caches(int val)
 		count_vm_event(DROP_SLAB);
 	}
 }
+EXPORT_SYMBOL_GPL(mm_drop_caches);
 
 int drop_caches_sysctl_handler(struct ctl_table *table, int write,
 	void __user *buffer, size_t *length, loff_t *ppos)
