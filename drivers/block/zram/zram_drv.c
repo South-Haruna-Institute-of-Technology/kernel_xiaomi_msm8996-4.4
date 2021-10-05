@@ -32,7 +32,6 @@
 #include <linux/idr.h>
 #include <linux/sysfs.h>
 #include <linux/debugfs.h>
-#include <linux/agni_meminfo.h>
 
 #include "zram_drv.h"
 
@@ -1518,16 +1517,6 @@ static ssize_t disksize_store(struct device *dev,
 		err = -EBUSY;
 		goto out_unlock;
 	}
-
-	device_totalram();
-	if (ramgb >= 4)
-		disksize = 2361393152; /* AGNi Memory management: >= 4gb ram devices */
-	else
-		disksize = 1665393152; /* AGNi Memory management: 3gb ram devices */
-	zramzero = false;
-#ifdef CONFIG_DYNAMIC_FSYNC
-	dyn_fsync_active = true;
-#endif
 
 	disksize = PAGE_ALIGN(disksize);
 	if (!zram_meta_alloc(zram, disksize)) {

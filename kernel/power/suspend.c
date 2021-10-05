@@ -30,7 +30,6 @@
 #include <linux/compiler.h>
 #include <linux/moduleparam.h>
 #include <linux/wakeup_reason.h>
-#include <linux/agni_meminfo.h>
 
 #include "power.h"
 
