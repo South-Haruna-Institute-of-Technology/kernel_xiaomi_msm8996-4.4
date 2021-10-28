@@ -3596,7 +3596,11 @@ static int handle_pte_fault(struct mm_struct *mm,
 	}
 
 	if (pte_protnone(entry) && vma_is_accessible(vma))
-		return do_numa_page(mm, vma, address, entry, pte, pmd);
+		return do_numa_page(mm, vma, address, entry, pte, pmd, vmf2);
+
+	if (!pte_spinlock(vmf2))
+		return VM_FAULT_RETRY;
+	ptl = vmf2->ptl;
 
 	if (unlikely(!pte_same(*pte, entry)))
 		goto unlock;
