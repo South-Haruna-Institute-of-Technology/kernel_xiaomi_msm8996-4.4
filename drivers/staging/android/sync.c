@@ -402,7 +402,7 @@ EXPORT_SYMBOL(sync_fence_cancel_async);
 int sync_fence_wait(struct sync_fence *fence, long timeout)
 {
 	long ret;
-//	int i;
+	int i;
 
 	if (timeout < 0)
 		timeout = MAX_SCHEDULE_TIMEOUT;
